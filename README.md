@@ -47,6 +47,34 @@ Dashlet is a modern, self-hosted dashboard for your homelab services, focusing o
 You can configure Dashlet via the UI or by editing `user/config.yaml`.
 Export your current settings from the UI to generate a fresh config file.
 
+### Example `user/config.yaml`
+
+```yaml
+settings:
+  appTitle: "My Dashboard"
+  greeting: "Welcome Home"
+  theme: "dark" # system, dark, light
+  accentColor: "#3b82f6"
+  wallpaper: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e"
+  blur: true
+  layout: "grid" # grid, list
+  openNewTab: true
+  animations: true
+
+services:
+  - id: "1"
+    name: "GitHub"
+    description: "Code hosting"
+    url: "https://github.com"
+    icon: "https://github.githubassets.com/favicons/favicon.png"
+  
+  - id: "2"
+    name: "YouTube"
+    description: "Watch videos"
+    url: "https://youtube.com"
+    icon: "https://www.youtube.com/s/desktop/10c3d9b4/img/favicon_144x144.png"
+```
+
 ## Contributing
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests.
 

@@ -63,11 +63,12 @@ export const SettingsModal = (currentSettings) => `
                     <h3>Configuration</h3>
                      <div class="setting-row actions-row">
                         <button id="btn-export">Export Config</button>
-                        <button id="btn-import">Import JSON</button>
+                        <button id="btn-import">Import Config</button>
                     </div>
                     <div class="setting-row">
                          <small class="help-text">
-                            "Export Config" downloads a <code>config.yaml</code>. Replace the file in your root directory to make changes permanent.
+                            <strong>Export:</strong> Download current settings as <code>config.yaml</code>.<br>
+                            <strong>Import:</strong> Load settings/services from a JSON or YAML file into the current session. (Does not save to server).
                         </small>
                     </div>
                     <div class="setting-row" style="margin-top: 1rem;">
