@@ -3,7 +3,7 @@ services:
     image: jaypel/dashlet:latest
     container_name: dashlet
     ports:
-      - "3000:3000"
+      - "8989:8989"
     volumes:
       # Mount the 'public' directory. Docker will populate it if empty.
       - ./app/public:/app/public

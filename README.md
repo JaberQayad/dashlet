@@ -35,7 +35,7 @@ Dashlet is a modern, self-hosted dashboard for your homelab services, focusing o
    ```bash
    npm run dev
    ```
-   This will start a local server at `http://127.0.0.1:3000` and watch for SCSS changes.
+   This will start a local server at `http://127.0.0.1:8989` and watch for SCSS changes.
 
 ### Deployment (Netlify/Vercel)
 
@@ -47,7 +47,7 @@ Dashlet is a modern, self-hosted dashboard for your homelab services, focusing o
 Run Dashlet instantly with Docker:
 
 ```bash
-docker run -d -p 3000:3000 --name dashlet jaypel/dashlet:latest
+docker run -d -p 8989:8989 --name dashlet jaypel/dashlet:latest
 ```
 
 Or using **Docker Compose**:
@@ -61,7 +61,7 @@ services:
     image: jaypel/dashlet:latest
     container_name: dashlet
     ports:
-      - "3000:3000"
+      - "8989:8989"
     volumes:
       - ./app/public:/app/public
     restart: unless-stopped

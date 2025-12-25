@@ -7,4 +7,4 @@ if [ ! -f public/config.json ]; then
 fi
 
 # Start the application
-exec npx serve . -l tcp://0.0.0.0:3000
+exec npx serve . -l 8989
