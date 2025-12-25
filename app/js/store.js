@@ -21,40 +21,18 @@ export class SettingsStore {
 
     async loadConfig() {
         try {
-            const response = await fetch('user/config.yaml');
+            const response = await fetch('public/config.json');
             if (response.ok) {
-                const text = await response.text();
-                // Check if jsyaml is available (loaded via script tag)
-                if (window.jsyaml) {
-                    const config = window.jsyaml.load(text);
-                    if (config && config.settings) {
-                        // Merge YAML settings with current (localStorage takes precedence? Or YAML?)
-                        // User request: "config.yaml for all app config and changes on ui will also change config"
-                        // Since we can't write to file from browser easily without server API, 
-                        // we'll treat YAML as "defaults" that override everything on load, OR localStorage overrides YAML.
-                        // Usually YAML is persistent source of truth if editable.
-                        // But we also have localStorage. 
-                        // Let's say: YAML > Defaults. LocalStorage > YAML.
-                        // Wait, "changes on the ui will also change the config". 
-                        // We can't write to disk. We can only "Export".
-                        // So, we'll implement "Export Config".
-
-                        // Phase 3 Persistence Fix:
-                        // 1. YAML config is the "Base" defaults.
-                        // 2. localStorage is the "User Overrides".
-                        // So we should apply Config first, then re-apply stored settings on top.
-
-                        this.settings = { ...DEFAULT_SETTINGS, ...config.settings, ...this.load() };
-
-                        // Note: this.load() reads from localStorage again to ensure we layer it on top.
-                        this.save(); // Sync merged state back
-                        this.notify();
-                    }
-                    return config; // Return full config for other stores
+                const config = await response.json();
+                if (config && config.settings) {
+                    this.settings = { ...DEFAULT_SETTINGS, ...config.settings, ...this.load() };
+                    this.save();
+                    this.notify();
                 }
+                return config;
             }
         } catch (e) {
-            console.error('Failed to load config.yaml:', e);
+            console.error('Failed to load config.json:', e);
         }
         return null;
     }

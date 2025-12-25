@@ -67,8 +67,8 @@ export const SettingsModal = (currentSettings) => `
                     </div>
                     <div class="setting-row">
                          <small class="help-text">
-                            <strong>Export:</strong> Download current settings as <code>config.yaml</code>.<br>
-                            <strong>Import:</strong> Load settings/services from a JSON or YAML file into the current session. (Does not save to server).
+                            <strong>Export:</strong> Download current settings as <code>config.json</code>.<br>
+                            <strong>Import:</strong> Load settings/services from a JSON file into the current session. (Does not save to server).
                         </small>
                     </div>
                     <div class="setting-row" style="margin-top: 1rem;">

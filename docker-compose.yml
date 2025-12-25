@@ -5,6 +5,6 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      # Mount the 'user' directory. Docker will populate it if empty.
-      - ./app/user:/app/user
+      # Mount the 'public' directory. Docker will populate it if empty.
+      - ./app/public:/app/public
     restart: unless-stopped

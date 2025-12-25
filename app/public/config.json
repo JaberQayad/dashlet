@@ -1,0 +1,73 @@
+{
+    "settings": {
+        "theme": "system",
+        "accentColor": "#3b82f6",
+        "blur": true,
+        "animations": true,
+        "openNewTab": true,
+        "layout": "grid",
+        "wallpaper": "",
+        "searchProvider": "https://duckduckgo.com/?q=",
+        "weatherEnabled": false,
+        "weatherLocation": "",
+        "customCSS": ""
+    },
+    "services": [
+        {
+            "id": "github",
+            "name": "GitHub",
+            "url": "https://github.com",
+            "icon": "https://github.githubassets.com/favicons/favicon.png",
+            "description": "Code hosting platform"
+        },
+        {
+            "id": "youtube",
+            "name": "YouTube",
+            "url": "https://youtube.com",
+            "icon": "https://www.youtube.com/s/desktop/10c3d9b4/img/favicon_144x144.png",
+            "description": "Video sharing"
+        },
+        {
+            "id": "reddit",
+            "name": "Reddit",
+            "url": "https://reddit.com",
+            "icon": "https://www.redditstatic.com/desktop2x/img/favicon/favicon-96x96.png",
+            "description": "Front page of the internet"
+        },
+        {
+            "id": "gmail",
+            "name": "Gmail",
+            "url": "https://mail.google.com",
+            "icon": "https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico",
+            "description": "Email by Google"
+        },
+        {
+            "id": "twitter",
+            "name": "X (Twitter)",
+            "url": "https://twitter.com",
+            "icon": "https://abs.twimg.com/favicons/twitter.ico",
+            "description": "Social Media"
+        },
+        {
+            "id": "netflix",
+            "name": "Netflix",
+            "url": "https://netflix.com",
+            "icon": "https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.ico",
+            "description": "Streaming Service"
+        },
+        {
+            "id": "amazon",
+            "name": "Amazon",
+            "url": "https://amazon.com",
+            "icon": "https://www.amazon.com/favicon.ico",
+            "description": "E-commerce"
+        },
+        {
+            "id": "chatgpt",
+            "name": "ChatGPT",
+            "url": "https://chatgpt.com",
+            "icon": "https://chatgpt.com/favicon.ico",
+            "description": "AI Assistant"
+        }
+    ]
+}

@@ -153,17 +153,11 @@ export class UI {
                 services: services.getAll() // Export current services state
             };
 
-            let yamlStr = '';
-            if (window.jsyaml && window.jsyaml.dump) {
-                yamlStr = window.jsyaml.dump(configObj);
-            } else {
-                yamlStr = JSON.stringify(configObj, null, 2);
-            }
-
-            const dataStr = "data:text/yaml;charset=utf-8," + encodeURIComponent(yamlStr);
+            const jsonStr = JSON.stringify(configObj, null, 2);
+            const dataStr = "data:application/json;charset=utf-8," + encodeURIComponent(jsonStr);
             const anchor = document.createElement('a');
             anchor.setAttribute("href", dataStr);
-            anchor.setAttribute("download", "config.yaml");
+            anchor.setAttribute("download", "config.json");
             document.body.appendChild(anchor);
             anchor.click();
             anchor.remove();
@@ -172,24 +166,19 @@ export class UI {
         document.getElementById('btn-import').addEventListener('click', () => {
             const input = document.createElement('input');
             input.type = 'file';
-            input.accept = '.json,.yaml,.yml';
+            input.accept = '.json';
             input.onchange = (e) => {
                 const file = e.target.files[0];
                 if (file) {
                     const reader = new FileReader();
                     reader.onload = (ev) => {
                         const content = ev.target.result;
-                        // Try YAML first if avail
                         let data = null;
                         try {
-                            if (window.jsyaml) {
-                                data = window.jsyaml.load(content);
-                            } else {
-                                data = JSON.parse(content);
-                            }
+                            data = JSON.parse(content);
                         } catch (err) {
                             console.error(err);
-                            alert('Failed to parse file');
+                            alert('Failed to parse file: ' + err.message);
                             return;
                         }
 
