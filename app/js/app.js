@@ -13,28 +13,14 @@ settings.loadConfig().then(config => {
     const localServices = services.getAll();
 
     if (config && config.services) {
-        if (localServices.length === 0) {
-            // First run or empty: Load all
-            const mappedServices = config.services.map((s, i) => ({
-                ...s,
-                id: s.id || `yaml-${i}`
-            }));
-            services.replaceAll(mappedServices);
-        } else {
-            // Merge new ones
-            const existingUrls = new Set(localServices.map(s => s.url));
-            const newServices = config.services.filter(s => !existingUrls.has(s.url));
-
-            if (newServices.length > 0) {
-                const mappedNew = newServices.map((s, i) => ({
-                    ...s,
-                    id: s.id || `yaml-merge-${Date.now()}-${i}`
-                }));
-                // Append and save
-                const merged = [...localServices, ...mappedNew];
-                services.replaceAll(merged);
-                console.log(`Added ${mappedNew.length} new services from config.`);
-            }
-        }
+        // Strict Sync: Config is the source of truth.
+        // If config.services exists, it overwrites local storage to ensure 
+        // deleted items in config are removed from the app.
+        const mappedServices = config.services.map((s, i) => ({
+            ...s,
+            id: s.id || `json-${i}`
+        }));
+        services.replaceAll(mappedServices);
+        console.log(`Loaded ${mappedServices.length} services from config.`);
     }
 });
