@@ -42,6 +42,28 @@ Dashlet is a modern, self-hosted dashboard for your homelab services, focusing o
 - **Build Command**: `npm run build`
 - **Output Directory**: `.` (Current directory) or just serve `index.html`.
 
+### Docker Deployment
+
+Run Dashlet instantly with Docker:
+
+```bash
+docker run -d -p 3000:3000 --name dashlet jaypel/dashlet:latest
+```
+
+Or using **Docker Compose**:
+
+```yaml
+services:
+  dashlet:
+    image: jaypel/dashlet:latest
+    container_name: dashlet
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./user/config.yaml:/app/app/user/config.yaml:ro
+    restart: unless-stopped
+```
+
 ## Configuration
 
 You can configure Dashlet via the UI or by editing `user/config.yaml`.
