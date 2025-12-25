@@ -24,7 +24,7 @@ Dashlet is a modern, self-hosted dashboard for your homelab services, focusing o
 
 1. Clone or download:
    ```bash
-   git clone <repo> dashlet
+   git clone https://github.com/JaberQayad/dashlet.git
    cd dashlet
    ```
 2. Install dependencies (for SCSS compiler):
@@ -52,6 +52,11 @@ docker run -d -p 3000:3000 --name dashlet jaypel/dashlet:latest
 
 Or using **Docker Compose**:
 
+> [!IMPORTANT]
+> **Volume Mount Error**: If you see `not a directory` or `are you trying to mount a directory onto a file`, it means `app/user/config.yaml` is missing on your host machine.
+> 1. Create the file manully: `mkdir -p app/user && touch app/user/config.yaml`
+> 2. OR remove the `- ./app/user/config.yaml...` line to use the default config initially.
+
 ```yaml
 services:
   dashlet:
@@ -60,7 +65,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./app/user/config.yaml:/app/user/config.yaml:ro
+      - ./app/user:/app/user
     restart: unless-stopped
 ```
 

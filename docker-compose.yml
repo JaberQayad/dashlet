@@ -5,6 +5,6 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      # Mount the local config.yaml to allow hot-reloading/editing of config
-      - ./app/user/config.yaml:/app/user/config.yaml:ro
+      # Mount the 'user' directory. Docker will populate it if empty.
+      - ./app/user:/app/user
     restart: unless-stopped
