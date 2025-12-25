@@ -1,5 +1,6 @@
 services:
   dashlet:
+    build: .
     image: jaypel/dashlet:latest
     container_name: dashlet
     ports:
