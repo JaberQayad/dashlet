@@ -216,11 +216,13 @@ export class UI {
         }
 
         if (s.wallpaper) {
+            console.log('Applying wallpaper:', s.wallpaper);
             document.body.style.backgroundImage = `url('${s.wallpaper}')`;
             document.body.style.backgroundSize = 'cover';
             document.body.style.backgroundPosition = 'center';
             document.body.style.backgroundAttachment = 'fixed';
         } else {
+            console.log('No wallpaper set, removing.');
             document.body.style.backgroundImage = '';
         }
 
