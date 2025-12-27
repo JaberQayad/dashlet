@@ -4,7 +4,7 @@ import { services } from './data.js';
 
 import { pingServices } from './pingservices.js';
 
-console.log("Dashlet Initialized");
+console.log("Dashlet Initialized - Version: SyncFix-v1");
 
 // Initialize Config
 settings.loadConfig().then(config => {
