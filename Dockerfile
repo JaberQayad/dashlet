@@ -7,8 +7,6 @@ RUN npm install
 
 COPY app .
 
-# Backup the default config to root (outside the volume mount) so it persists
-RUN cp public/config.json config.default.json
 
 RUN npx sass css/main.scss:css/main.css --no-source-map --style compressed
 

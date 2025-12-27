@@ -68,6 +68,62 @@
             "url": "https://chatgpt.com",
             "icon": "https://chatgpt.com/favicon.ico",
             "description": "AI Assistant"
+        },
+        {
+            "id": "whatsapp",
+            "name": "WhatsApp",
+            "url": "https://web.whatsapp.com",
+            "icon": "https://www.whatsapp.com/favicon.ico",
+            "description": "Chat with friends and family"
+        },
+        {
+            "id": "discord",
+            "name": "Discord",
+            "url": "https://discord.com",
+            "icon": "https://discord.com/favicon.ico",
+            "description": "Chat with friends and family"
+        },
+        {
+            "id": "spotify",
+            "name": "Spotify",
+            "url": "https://spotify.com",
+            "icon": "https://spotify.com/favicon.ico",
+            "description": "Music streaming"
+        },
+        {
+            "id": "instagram",
+            "name": "Instagram",
+            "url": "https://instagram.com",
+            "icon": "https://instagram.com/favicon.ico",
+            "description": "Social Media"
+        },
+        {
+            "id": "tiktok",
+            "name": "TikTok",
+            "url": "https://tiktok.com",
+            "icon": "https://tiktok.com/favicon.ico",
+            "description": "Social Media"
+        },
+        {
+            "id": "telegram",
+            "name": "Telegram",
+            "url": "https://telegram.com",
+            "icon": "https://telegram.com/favicon.ico",
+            "description": "Chat with friends and family"
+        },
+        {
+            "id": "twitter",
+            "name": "X (Twitter)",
+            "url": "https://twitter.com",
+            "icon": "https://abs.twimg.com/favicons/twitter.ico",
+            "description": "Social Media"
+        },
+        {
+            "id": "linkedin",
+            "name": "LinkedIn",
+            "url": "https://linkedin.com",
+            "icon": "https://www.linkedin.com/favicon.ico",
+            "description": "Professional networking"
         }
     ]
 }

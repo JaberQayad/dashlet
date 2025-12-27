@@ -21,7 +21,7 @@ export class SettingsStore {
 
     async loadConfig() {
         try {
-            const response = await fetch('public/config.json');
+            const response = await fetch(`public/config.json?t=${Date.now()}`);
             if (response.ok) {
                 const config = await response.json();
                 if (config && config.settings) {
