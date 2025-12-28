@@ -215,23 +215,47 @@ main {
 }
 
 .app-footer {
-    padding: 1rem;
-    flex-shrink: 0; // Don't shrink
+    padding: 1.5rem 1rem;
+    flex-shrink: 0;
     text-align: center;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--text-muted);
+    border-top: 1px solid var(--card-border);
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
 
-    .sep {
-        margin: 0 0.5rem;
+    .footer-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        flex-wrap: wrap;
     }
 
-    a {
-        color: inherit;
-        text-decoration: none;
+    .footer-text {
+        opacity: 0.8;
+    }
+
+    .footer-link {
+        font-weight: 600;
+        color: var(--text-color);
+        transition: all 0.2s ease;
 
         &:hover {
-            text-decoration: underline;
+            color: $primary-color;
+            text-decoration: none;
+            transform: translateY(-1px);
         }
+    }
+
+    .footer-version {
+        font-family: monospace;
+        background: var(--card-bg);
+        padding: 0.1rem 0.4rem;
+        border-radius: 4px;
+        font-size: 0.7rem;
+        opacity: 0.6;
+        border: 1px solid var(--card-border);
     }
 }
 
