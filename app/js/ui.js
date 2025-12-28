@@ -47,6 +47,8 @@ export class UI {
         // Initial Render
         this.renderServices();
         this.applySettings(settings.settings);
+        this.initSearch();
+        this.initWeather();
     }
 
     updateHeaderText(s) {
@@ -108,6 +110,63 @@ export class UI {
                 settings.set('layout', next);
             }
         });
+
+        // Search Input Listener
+        this.app.addEventListener('keydown', (e) => {
+            if (e.target.id === 'app-search' && e.key === 'Enter') {
+                this.performSearch(e.target.value);
+            }
+        });
+    }
+
+    initSearch() {
+        // Any specific search init logic if needed
+    }
+
+    performSearch(query) {
+        if (!query) return;
+        const provider = settings.get('searchProvider');
+        if (!provider) return;
+
+        let url = provider;
+        if (url.includes('%s')) {
+            url = url.replace('%s', encodeURIComponent(query));
+        } else {
+            url += encodeURIComponent(query);
+        }
+        window.open(url, settings.get('openNewTab') ? '_blank' : '_self');
+    }
+
+    async initWeather() {
+        const s = settings.settings;
+        const widget = document.getElementById('weather-widget');
+        if (!widget) return;
+
+        if (!s.weatherEnabled || !s.weatherLocation) {
+            widget.innerHTML = '';
+            return;
+        }
+
+        try {
+            const [lat, lon] = s.weatherLocation.split(',').map(c => c.trim());
+            if (!lat || !lon) throw new Error('Invalid location format');
+
+            const resp = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`);
+            const data = await resp.json();
+
+            if (data.current_weather) {
+                const temp = Math.round(data.current_weather.temperature);
+                const code = data.current_weather.weathercode;
+                // Simple mapping of WMO codes to icons/text could be added here
+                widget.innerHTML = `
+                    <span class="weather-temp">${temp}°C</span>
+                    <span class="material-symbols-rounded weather-icon">cloud</span>
+                `;
+            }
+        } catch (e) {
+            console.error('Weather fetch failed:', e);
+            widget.innerHTML = '<span class="weather-error">!</span>';
+        }
     }
 
     openSettings() {
@@ -149,9 +208,11 @@ export class UI {
 
         bindInput('setting-accent', 'accentColor');
         bindInput('setting-wallpaper', 'wallpaper');
-        // New Title/Greeting Inputs
         bindInput('setting-appTitle', 'appTitle');
         bindInput('setting-greeting', 'greeting');
+        bindInput('setting-search', 'searchProvider');
+        bindCheckbox('setting-weatherEnabled', 'weatherEnabled');
+        bindInput('setting-weatherLocation', 'weatherLocation');
 
         // Actions
         document.getElementById('btn-reset').addEventListener('click', () => {
@@ -254,6 +315,9 @@ export class UI {
             if (s.layout === 'list') grid.classList.add('list-view');
             else grid.classList.remove('list-view');
         }
+
+        // Re-init weather if visibility changed
+        this.initWeather();
     }
 }
 

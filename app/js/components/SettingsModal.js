@@ -44,6 +44,29 @@ export const SettingsModal = (currentSettings) => `
                 </section>
 
                 <section>
+                    <h3>Search</h3>
+                    <div class="setting-row">
+                        <label for="setting-search">Search Provider</label>
+                        <input type="text" id="setting-search" placeholder="https://..." value="${currentSettings.searchProvider || ''}">
+                    </div>
+                    <small class="help-text">Query placeholder should be <code>%s</code> or at the end of the URL.</small>
+                </section>
+
+                <section>
+                    <h3>Weather</h3>
+                    <div class="setting-row">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="setting-weatherEnabled" ${currentSettings.weatherEnabled ? 'checked' : ''}>
+                            <span>Enable Weather</span>
+                        </label>
+                    </div>
+                    <div class="setting-row">
+                        <label for="setting-weatherLocation">Location (Lat,Lon)</label>
+                        <input type="text" id="setting-weatherLocation" placeholder="51.50,-0.12" value="${currentSettings.weatherLocation || ''}">
+                    </div>
+                </section>
+
+                <section>
                     <h3>Behavior</h3>
                     <div class="setting-row">
                         <label class="checkbox-label">

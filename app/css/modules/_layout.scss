@@ -112,6 +112,44 @@ main {
         }
     }
 
+    .controls-right {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .weather-widget {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: var(--text-color);
+        backdrop-filter: blur(10px);
+
+        &:empty {
+            display: none;
+        }
+
+        .weather-temp {
+            font-size: 1rem;
+        }
+
+        .weather-icon {
+            font-size: 20px;
+            color: $primary-color;
+        }
+
+        .weather-error {
+            color: #ef4444;
+            font-weight: 800;
+        }
+    }
+
     .controls {
         display: flex;
         gap: 1rem;
@@ -128,6 +166,7 @@ main {
             justify-content: center;
             cursor: pointer;
             transition: all 0.2s;
+            backdrop-filter: blur(10px);
 
             &:hover {
                 background: var(--card-border);
@@ -137,6 +176,40 @@ main {
             span {
                 font-size: 20px;
             }
+        }
+    }
+}
+
+.search-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 1.5rem;
+    padding: 0 5%;
+    flex-shrink: 0;
+
+    .app-search {
+        width: 100%;
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        color: var(--text-color);
+        padding: 0.8rem 1.5rem;
+        border-radius: 100px;
+        font-size: 1.1rem;
+        outline: none;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        text-align: center;
+        backdrop-filter: blur(10px);
+
+        &::placeholder {
+            color: var(--text-muted);
+            opacity: 0.5;
+        }
+
+        &:focus {
+            border-color: $primary-color;
+            background: rgba(255, 255, 255, 0.08);
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
         }
     }
 }

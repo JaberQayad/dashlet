@@ -8,8 +8,8 @@
         "layout": "grid",
         "wallpaper": "",
         "searchProvider": "https://duckduckgo.com/?q=",
-        "weatherEnabled": false,
-        "weatherLocation": "",
+        "weatherEnabled": true,
+        "weatherLocation": "Brussels",
         "customCSS": ""
     },
     "services": [
