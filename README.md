@@ -7,11 +7,7 @@
 Dashlet is a modern, self-hosted dashboard for your homelab services, focusing on a clean code, modular styling, and robust settings management.
 
 <p align="center">
-  <img src="screenshots/Screenshot 1.png" width="300" />
-  <img src="screenshots/Screenshot 2.png" width="300" />
-  <img src="screenshots/Screenshot 3.png" width="300" />
-  <img src="screenshots/Screenshot 4.png" width="300" />
-  <img src="screenshots/Screenshot 5.png" width="300" />
+  <img src="screenshots/showcase.gif" width="600" />
 </p>
 
 ## Features
