@@ -165,8 +165,6 @@ export class UI {
         bindInput('setting-appTitle', 'appTitle');
         bindInput('setting-greeting', 'greeting');
         bindInput('setting-search', 'searchProvider');
-        bindInput('setting-footerText', 'footerText');
-        bindInput('setting-footerColor', 'footerColor');
 
         // Actions
         document.getElementById('btn-reset').addEventListener('click', () => {

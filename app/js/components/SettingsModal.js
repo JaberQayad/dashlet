@@ -58,17 +58,6 @@ export const SettingsModal = (currentSettings) => `
                     <small class="help-text">Query placeholder should be <code>%s</code> or at the end of the URL.</small>
                 </section>
 
-                <section>
-                    <h3>Footer</h3>
-                    <div class="setting-row">
-                        <label for="setting-footerText">Footer Text</label>
-                        <input type="text" id="setting-footerText" placeholder="Powered by Dashlet" value="${currentSettings.footerText || ''}">
-                    </div>
-                    <div class="setting-row">
-                        <label for="setting-footerColor">Footer Color</label>
-                        <input type="text" id="setting-footerColor" placeholder="e.g. #fff (empty for theme-default)" value="${currentSettings.footerColor || ''}">
-                    </div>
-                </section>
 
                 <section>
                     <h3>Behavior</h3>
