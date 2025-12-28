@@ -13,7 +13,7 @@ const DEFAULT_SETTINGS = {
     disableDragDrop: false,
     dragDelay: 0,
     searchEnabled: true,
-    footerText: 'Powered by Dashlet',
+    footerText: 'Powered by',
     footerColor: ''
 };
 
