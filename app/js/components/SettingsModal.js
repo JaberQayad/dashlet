@@ -46,6 +46,12 @@ export const SettingsModal = (currentSettings) => `
                 <section>
                     <h3>Search</h3>
                     <div class="setting-row">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="setting-searchEnabled" ${currentSettings.searchEnabled ? 'checked' : ''}>
+                            <span>Enable Search</span>
+                        </label>
+                    </div>
+                    <div class="setting-row">
                         <label for="setting-search">Search Provider</label>
                         <input type="text" id="setting-search" placeholder="https://..." value="${currentSettings.searchProvider || ''}">
                     </div>
@@ -61,8 +67,8 @@ export const SettingsModal = (currentSettings) => `
                         </label>
                     </div>
                     <div class="setting-row">
-                        <label for="setting-weatherLocation">Location (Lat,Lon)</label>
-                        <input type="text" id="setting-weatherLocation" placeholder="51.50,-0.12" value="${currentSettings.weatherLocation || ''}">
+                        <label for="setting-weatherLocation">Location (City or Lat,Lon)</label>
+                        <input type="text" id="setting-weatherLocation" placeholder="London or 51.50,-0.12" value="${currentSettings.weatherLocation || ''}">
                     </div>
                 </section>
 

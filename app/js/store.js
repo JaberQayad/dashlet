@@ -11,7 +11,8 @@ const DEFAULT_SETTINGS = {
     weatherLocation: '',
     customCSS: '',
     disableDragDrop: false,
-    dragDelay: 0
+    dragDelay: 0,
+    searchEnabled: true
 };
 
 export class SettingsStore {

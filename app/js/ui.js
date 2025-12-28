@@ -148,16 +148,29 @@ export class UI {
         }
 
         try {
-            const [lat, lon] = s.weatherLocation.split(',').map(c => c.trim());
-            if (!lat || !lon) throw new Error('Invalid location format');
+            let lat, lon;
+            const loc = s.weatherLocation.trim();
+
+            // Try to parse as Coords (Lat,Lon)
+            if (loc.includes(',') && !isNaN(loc.split(',')[0])) {
+                [lat, lon] = loc.split(',').map(c => c.trim());
+            } else {
+                // Try Geocoding (City Name)
+                const geoResp = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(loc)}&count=1&language=en&format=json`);
+                const geoData = await geoResp.json();
+                if (geoData.results && geoData.results.length > 0) {
+                    lat = geoData.results[0].latitude;
+                    lon = geoData.results[0].longitude;
+                } else {
+                    throw new Error('City not found');
+                }
+            }
 
             const resp = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`);
             const data = await resp.json();
 
             if (data.current_weather) {
                 const temp = Math.round(data.current_weather.temperature);
-                const code = data.current_weather.weathercode;
-                // Simple mapping of WMO codes to icons/text could be added here
                 widget.innerHTML = `
                     <span class="weather-temp">${temp}°C</span>
                     <span class="material-symbols-rounded weather-icon">cloud</span>
@@ -165,7 +178,7 @@ export class UI {
             }
         } catch (e) {
             console.error('Weather fetch failed:', e);
-            widget.innerHTML = '<span class="weather-error">!</span>';
+            widget.innerHTML = '<span class="weather-error" title="Weather failed: ' + e.message + '">!</span>';
         }
     }
 
@@ -198,6 +211,7 @@ export class UI {
         bindCheckbox('setting-animations', 'animations');
         bindCheckbox('setting-blur', 'blur');
         bindCheckbox('setting-disableDragDrop', 'disableDragDrop');
+        bindCheckbox('setting-searchEnabled', 'searchEnabled');
 
         const dragDelayEl = document.getElementById('setting-dragDelay');
         if (dragDelayEl) {

@@ -4,6 +4,12 @@ export const Header = (settings) => `
             <h1 class="logo">${settings.appTitle || 'Dashlet'}</h1>
             <div class="greeting">${settings.greeting || 'Lightweight dashboard for small apps'}</div>
         </div>
+
+        ${settings.searchEnabled ? `
+        <div class="search-container">
+            <input type="text" id="app-search" class="app-search" placeholder="Search..." aria-label="Search">
+        </div>
+        ` : ''}
         
         <div class="controls-right">
             <div id="weather-widget" class="weather-widget"></div>
@@ -17,7 +23,4 @@ export const Header = (settings) => `
             </div>
         </div>
     </header>
-    <div class="search-container">
-        <input type="text" id="app-search" class="app-search" placeholder="Search..." aria-label="Search">
-    </div>
 `;

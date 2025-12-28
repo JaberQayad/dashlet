@@ -87,42 +87,78 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 5%;
+    padding: 1rem 5%;
     max-width: 1400px;
     margin: 0 auto;
     width: 100%;
-    flex-shrink: 0; // Don't shrink
+    flex-shrink: 0;
     z-index: 10;
+    gap: 2rem;
 
     .brand {
+        flex: 0 0 auto;
+
         h1 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 800;
             background: linear-gradient(45deg, $primary-color, #a855f7);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.1rem;
         }
 
         .greeting {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
             font-weight: 500;
+        }
+    }
+
+    .search-container {
+        flex: 1;
+        max-width: 400px;
+        display: flex;
+        justify-content: center;
+
+        .app-search {
+            width: 100%;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-color);
+            padding: 0.6rem 1.2rem;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.2s ease;
+            text-align: left;
+            backdrop-filter: blur(10px);
+            height: 42px; // Match button height
+
+            &::placeholder {
+                color: var(--text-muted);
+                opacity: 0.5;
+            }
+
+            &:focus {
+                border-color: $primary-color;
+                background: rgba(255, 255, 255, 0.08);
+            }
         }
     }
 
     .controls-right {
         display: flex;
         align-items: center;
-        gap: 1.5rem;
+        gap: 1rem;
+        flex: 0 0 auto;
     }
 
     .weather-widget {
         display: flex;
         align-items: center;
         gap: 0.5rem;
-        padding: 0.5rem 1rem;
+        padding: 0 1rem;
         background: var(--card-bg);
         border: 1px solid var(--card-border);
         border-radius: 12px;
@@ -130,6 +166,7 @@ main {
         font-size: 0.9rem;
         color: var(--text-color);
         backdrop-filter: blur(10px);
+        height: 42px; // Match button height
 
         &:empty {
             display: none;
@@ -176,40 +213,6 @@ main {
             span {
                 font-size: 20px;
             }
-        }
-    }
-}
-
-.search-container {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto 1.5rem;
-    padding: 0 5%;
-    flex-shrink: 0;
-
-    .app-search {
-        width: 100%;
-        background: var(--card-bg);
-        border: 1px solid var(--card-border);
-        color: var(--text-color);
-        padding: 0.8rem 1.5rem;
-        border-radius: 100px;
-        font-size: 1.1rem;
-        outline: none;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        text-align: center;
-        backdrop-filter: blur(10px);
-
-        &::placeholder {
-            color: var(--text-muted);
-            opacity: 0.5;
-        }
-
-        &:focus {
-            border-color: $primary-color;
-            background: rgba(255, 255, 255, 0.08);
-            transform: scale(1.02);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
         }
     }
 }
