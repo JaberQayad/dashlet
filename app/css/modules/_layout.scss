@@ -101,7 +101,7 @@ main {
         min-width: 0; // Allow shrinking for search
 
         h1 {
-            font-size: 1.4rem; // Slightly smaller
+            font-size: 1.4rem;
             font-weight: 800;
             white-space: nowrap;
             overflow: hidden;
@@ -110,7 +110,19 @@ main {
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 0;
+            margin-bottom: -0.2rem;
+            line-height: 1.2;
+        }
+
+        .app-desc {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            opacity: 0.7;
+            margin: 0;
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
     }
 
@@ -178,6 +190,16 @@ main {
 
             span {
                 font-size: 18px;
+                transition: transform 0.2s ease;
+            }
+
+            &:hover {
+                background: var(--card-border);
+                transform: translateY(-2px);
+
+                span {
+                    transform: scale(1.1);
+                }
             }
         }
     }

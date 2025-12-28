@@ -2,6 +2,7 @@ export const Header = (settings) => `
     <header class="app-header">
         <div class="brand">
             <h1 class="logo">${settings.appTitle || 'Dashlet'}</h1>
+            <p class="app-desc">${settings.greeting || ''}</p>
         </div>
 
         ${settings.searchEnabled ? `

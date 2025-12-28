@@ -82,13 +82,35 @@
     }
 
     &:hover {
+        z-index: 10;
+
         .card-glass {
-            background: var(--card-bg); // Use variable
-            filter: brightness(1.2); // Brighten instead of hardcode
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            border-color: var(--text-color); // Highlight border
-            opacity: 0.9;
+            background: rgba(255, 255, 255, 0.12);
+            filter: brightness(1.1);
+            transform: translateY(-10px) scale(1.05);
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba($primary-color, 0.2);
+            border-color: rgba($primary-color, 0.5);
         }
+
+        .card-content {
+            .icon {
+                transform: scale(1.1) translateY(-5px);
+                filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.3));
+            }
+
+            .info .name {
+                color: $primary-color;
+            }
+        }
+    }
+
+    .card-content .icon {
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .info .name {
+        transition: color 0.3s ease;
     }
 }
