@@ -11,7 +11,7 @@ const DEFAULT_SETTINGS = {
     dragDelay: 0,
     searchEnabled: true,
     footerText: 'Powered by Dashlet',
-    footerColor: 'rgba(255, 255, 255, 0.4)'
+    footerColor: ''
 };
 
 export class SettingsStore {
@@ -27,7 +27,12 @@ export class SettingsStore {
             if (response.ok) {
                 const config = await response.json();
                 if (config && config.settings) {
-                    this.settings = { ...DEFAULT_SETTINGS, ...config.settings, ...this.load() };
+                    const merged = { ...DEFAULT_SETTINGS, ...config.settings, ...this.load() };
+                    // Purge legacy weather keys
+                    delete merged.weatherEnabled;
+                    delete merged.weatherLocation;
+                    delete merged.weatherProvider;
+                    this.settings = merged;
                     this.save();
                     this.notify();
                 }
@@ -42,7 +47,12 @@ export class SettingsStore {
     load() {
         try {
             const stored = localStorage.getItem(this.STORAGE_KEY);
-            return stored ? { ...DEFAULT_SETTINGS, ...JSON.parse(stored) } : { ...DEFAULT_SETTINGS };
+            const settings = stored ? { ...DEFAULT_SETTINGS, ...JSON.parse(stored) } : { ...DEFAULT_SETTINGS };
+            // Purge legacy weather keys
+            delete settings.weatherEnabled;
+            delete settings.weatherLocation;
+            delete settings.weatherProvider;
+            return settings;
         } catch (e) {
             console.error('Failed to load settings:', e);
             return { ...DEFAULT_SETTINGS };

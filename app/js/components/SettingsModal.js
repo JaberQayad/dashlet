@@ -66,7 +66,7 @@ export const SettingsModal = (currentSettings) => `
                     </div>
                     <div class="setting-row">
                         <label for="setting-footerColor">Footer Color</label>
-                        <input type="text" id="setting-footerColor" placeholder="rgba(255, 255, 255, 0.4)" value="${currentSettings.footerColor || ''}">
+                        <input type="text" id="setting-footerColor" placeholder="e.g. #fff (empty for theme-default)" value="${currentSettings.footerColor || ''}">
                     </div>
                 </section>
 

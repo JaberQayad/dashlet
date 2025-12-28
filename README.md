@@ -91,8 +91,6 @@ Export your current settings from the UI to generate a fresh `config.json` file.
         "layout": "grid",
         "wallpaper": "",
         "searchProvider": "https://duckduckgo.com/?q=",
-        "weatherEnabled": false,
-        "weatherLocation": "",
         "customCSS": ""
     },
   "services": [
