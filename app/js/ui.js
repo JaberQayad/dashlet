@@ -52,7 +52,7 @@ export class UI {
 
     renderServices() {
         const grid = document.getElementById('grid');
-        const allServices = services.getAll();
+        let allServices = services.getAll();
         const currentSettings = settings.settings;
 
         if (allServices.length === 0) {
@@ -60,11 +60,23 @@ export class UI {
             return;
         }
 
+        // Apply Sorting based on settings
+        const sortBy = currentSettings.sortBy || 'manual';
+        if (sortBy !== 'manual') {
+            allServices = [...allServices].sort((a, b) => {
+                const valA = (a[sortBy] || '').toLowerCase();
+                const valB = (b[sortBy] || '').toLowerCase();
+                return valA.localeCompare(valB);
+            });
+        }
+
         grid.innerHTML = allServices.map(s => ServiceCard(s, currentSettings)).join('');
 
         // Init/Re-init Sortable
         if (this.sortable) this.sortable.destroy();
-        if (currentSettings.disableDragDrop) return;
+
+        // Only enable Sortable if sortBy is manual AND D&D is not disabled
+        if (sortBy !== 'manual' || currentSettings.disableDragDrop) return;
 
         this.sortable = new Sortable(grid, {
             animation: 150,
@@ -73,9 +85,9 @@ export class UI {
             delayOnTouchOnly: true,
             onEnd: (evt) => {
                 const ids = Array.from(grid.children).map(el => el.getAttribute('data-id'));
-                const reordered = ids.map(id => allServices.find(s => s.id === id)).filter(Boolean);
+                const reordered = ids.map(id => services.getAll().find(s => s.id === id)).filter(Boolean);
 
-                if (reordered.length === allServices.length) {
+                if (reordered.length === services.getAll().length) {
                     services.replaceAll(reordered);
                 }
             }
@@ -93,6 +105,13 @@ export class UI {
                 const current = settings.get('layout') || 'grid';
                 const next = current === 'list' ? 'grid' : 'list';
                 settings.set('layout', next);
+            }
+        });
+
+        // Delegate change event for sort select (since header might re-render)
+        this.app.addEventListener('change', (e) => {
+            if (e.target.id === 'select-sort') {
+                settings.set('sortBy', e.target.value);
             }
         });
 

@@ -14,7 +14,8 @@ const DEFAULT_SETTINGS = {
     dragDelay: 0,
     searchEnabled: true,
     footerText: 'Powered by',
-    footerColor: ''
+    footerColor: '',
+    sortBy: 'manual'
 };
 
 export class SettingsStore {
