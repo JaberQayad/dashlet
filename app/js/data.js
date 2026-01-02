@@ -6,7 +6,7 @@ const DEFAULT_SERVICES = [
 
 export class DataStore {
     constructor() {
-        this.STORAGE_KEY = 'zenith_services';
+        this.STORAGE_KEY = 'dashlet_services';
         this.services = this.load();
         this.subscribers = [];
     }
