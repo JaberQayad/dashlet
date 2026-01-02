@@ -3,6 +3,8 @@
 > Lightweight dashboard for small apps
 >
 > **[Live Demo](https://jaberio.github.io/dashlet/)**
+>
+> <a href="https://buymeacoffee.com/Jay_me"><img src="https://img.shields.io/badge/Buy%20Me%20A%20Coffee-support-orange?style=for-the-badge&logo=buy-me-a-coffee" alt="Buy Me A Coffee"></a>
 
 Dashlet is a modern, self-hosted dashboard for your homelab services, focusing on a clean code, modular styling, and robust settings management.
 
