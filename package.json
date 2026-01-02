@@ -15,10 +15,7 @@
     "build": "sass app/css/main.scss:app/css/main.css --no-source-map --style compressed",
     "dev": "concurrently \"npm run sass:watch\" \"npm run serve:dev\"",
     "serve:dev": "live-server app --port=8989",
-    "sass:watch": "sass --watch app/css/main.scss:app/css/main.css",
-    "playground:dev": "concurrently \"npm run playground:sass:watch\" \"npm run playground:serve\"",
-    "playground:serve": "live-server playground --port=8990",
-    "playground:sass:watch": "sass --watch playground/css/main.scss:playground/css/main.css"
+    "sass:watch": "sass --watch app/css/main.scss:app/css/main.css"
   },
   "dependencies": {
     "serve": "^14.2.4"
