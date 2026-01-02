@@ -29,7 +29,7 @@ Dashlet is a modern, self-hosted dashboard for your homelab services, focusing o
 
 1. Clone or download:
    ```bash
-   git clone https://github.com/Jaberio/dashlet.git
+   git clone https://github.com/jaberio/dashlet.git
    cd dashlet
    ```
 2. Install dependencies (for SCSS compiler):
@@ -50,9 +50,9 @@ Dashlet is a modern, self-hosted dashboard for your homelab services, focusing o
 
 ### Deployment (Netlify/Vercel)
 
-- [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Jaberio/dashlet) 
+- [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/jaberio/dashlet) 
 
-- [![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/git-source?repository=https://github.com/Jaberio/dashlet)
+- [![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/git-source?repository=https://github.com/jaberio/dashlet)
 
 
 ### Docker Deployment
@@ -60,7 +60,7 @@ Dashlet is a modern, self-hosted dashboard for your homelab services, focusing o
 Run Dashlet instantly with Docker:
 
 ```bash
-docker run -d -p 8989:8989 --name dashlet jaypel/dashlet:latest
+docker run -d -p 8989:8989 --name dashlet ghcr.io/jaberio/dashlet:latest
 ```
 
 Or using **Docker Compose**:
@@ -71,7 +71,7 @@ Or using **Docker Compose**:
 ```yaml
 services:
   dashlet:
-    image: jaypel/dashlet:latest
+    image: ghcr.io/jaberio/dashlet:latest
     container_name: dashlet
     ports:
       - "8989:8989"

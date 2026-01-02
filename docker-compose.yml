@@ -1,7 +1,7 @@
 services:
   dashlet:
     build: .
-    image: jaypel/dashlet:latest
+    image: ghcr.io/jaberio/dashlet:latest
     container_name: dashlet
     ports:
       - "8989:8989"
